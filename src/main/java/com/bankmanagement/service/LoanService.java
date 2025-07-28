@@ -5,6 +5,8 @@ import com.bankmanagement.repository.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LoanService {
 
@@ -12,7 +14,10 @@ public class LoanService {
     private LoanRepository loanRepository;
 
     public Loan applyLoan(Loan loan) {
-        loan.setStatus("PENDING");
         return loanRepository.save(loan);
+    }
+
+    public List<Loan> getLoansByCustomerId(Long customerId) {
+        return loanRepository.findByCustomerId(customerId);
     }
 }

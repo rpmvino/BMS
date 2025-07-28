@@ -12,7 +12,13 @@ public class Customer {
     private Long id;
 
     private String name;
-    private String email;
-    private String phone;
+    private String username; // Unique
+    private String password;
     private String address;
+    private String state;
+    private String country;
+    private String email; // Unique
+    private String pan;
+    private String contactNo;
+    private String accountType;
 }
