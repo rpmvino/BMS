@@ -12,6 +12,7 @@ public class Customer {
     private Long id;
 
     private String name;
+    @Column(unique = true, nullable = false)
     private String username; // Unique
     private String password;
     private String address;

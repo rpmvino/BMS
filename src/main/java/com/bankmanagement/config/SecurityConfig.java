@@ -12,12 +12,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeHttpRequests()
-                .requestMatchers("/api/customers/register", "/api/customers/login").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .logout().logoutUrl("/api/customers/logout").logoutSuccessUrl("/api/customers/login");
+        http.csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/customers/register", "/api/customers/login").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/api/customers/logout")
+                        .logoutSuccessUrl("/api/customers/login")
+                );
         return http.build();
     }
 
